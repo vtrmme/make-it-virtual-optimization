@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make It Virtual — Optimization &amp; Visuals</title>
+<meta name="description" content="Guías profesionales para optimizar el rendimiento y transformar la estética de Windows 10, Windows 11 y Linux.">
+
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress-rail"><div class="progress-fill" id="scrollProgress"></div></div>
+
+<button class="audio-toggle" id="audioToggle" aria-pressed="false" aria-label="Activar sonido de interfaz">
+  <svg viewBox="0 0 24 24" class="icon-on"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7" stroke-linecap="round"/><path d="M19 6a9 9 0 0 1 0 12" stroke-linecap="round"/></svg>
+  <svg viewBox="0 0 24 24" class="icon-off"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 9l5 6M21 9l-5 6" stroke-linecap="round"/></svg>
+</button>
+
+<header class="site-nav" id="siteNav">
+  <a href="#top" class="brand">
+    <img src="assets/img/logo.png" alt="Make It Virtual" class="brand-mark">
+    <span class="brand-text">MAKE IT<em>VIRTUAL</em></span>
+  </a>
+  <nav class="main-links" id="mainLinks">
+    <a href="#windows10" data-os="win10">Windows 10</a>
+    <a href="#windows11" data-os="win11">Windows 11</a>
+    <a href="#linux" data-os="linux">Linux</a>
+    <a href="#galeria">Galería</a>
+    <a href="#herramientas">Herramientas</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas id="circuitCanvas" class="circuit-canvas"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker" data-reveal>01 / OPTIMIZACIÓN &amp; ESTÉTICA DIGITAL</p>
+        <h1 class="hero-title">
+          <span class="line" data-reveal>Haz que tu equipo</span>
+          <span class="line accent" data-reveal>se sienta virtual.</span>
+        </h1>
+        <p class="hero-sub" data-reveal>
+          Guías técnicas y ejemplos reales para acelerar Windows 10, Windows 11 y Linux —
+          y para vestirlos con una estética que no parezca salida de fábrica.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href="#windows10" class="btn btn-primary sfx-click">Empezar por Windows 10</a>
+          <a href="#linux" class="btn btn-ghost sfx-click">Ir directo a Linux</a>
+        </div>
+        <div class="hero-meta" data-reveal>
+          <div class="meta-item"><span class="meta-num">3</span><span class="meta-label">sistemas cubiertos</span></div>
+          <div class="meta-item"><span class="meta-num">40+</span><span class="meta-label">ajustes verificados</span></div>
+          <div class="meta-item"><span class="meta-num">0€</span><span class="meta-label">coste, todo es nativo o libre</span></div>
+        </div>
+      </div>
+      <div class="hero-badge" aria-hidden="true">
+        <div class="badge-orbit">
+          <img src="assets/img/logo.png" alt="" class="badge-logo">
+        </div>
+        <div class="badge-ring ring-1"></div>
+        <div class="badge-ring ring-2"></div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span></span>desliza</div>
+  </section>
+
+  <!-- ============ SELECTOR RÁPIDO ============ -->
+  <section class="quick-select">
+    <div class="section-inner">
+      <p class="section-kicker">02 / ELIGE TU SISTEMA</p>
+      <h2 class="section-title">Tres rutas, un mismo estándar de calidad.</h2>
+      <div class="select-grid">
+        <a href="#windows10" class="select-card" style="--acc:var(--acc-win10)">
+          <span class="select-tag">WIN 10</span>
+          <h3>Windows 10</h3>
+          <p>El clásico que aún mueve la mayoría de escritorios. Rendimiento primero, estética después.</p>
+          <span class="select-arrow">→</span>
+        </a>
+        <a href="#windows11" class="select-card" style="--acc:var(--acc-win11)">
+          <span class="select-tag">WIN 11</span>
+          <h3>Windows 11</h3>
+          <p>Mica, esquinas redondeadas y un Explorador que consume más de lo que debería.</p>
+          <span class="select-arrow">→</span>
+        </a>
+        <a href="#linux" class="select-card" style="--acc:var(--acc-linux)">
+          <span class="select-tag">LINUX</span>
+          <h3>Linux</h3>
+          <p>Libertad total: cada ciclo de CPU y cada píxel se pueden reconfigurar.</p>
+          <span class="select-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WINDOWS 10 ============ -->
+  <section class="os-section" id="windows10" data-os-section="win10">
+    <div class="section-inner">
+      <p class="section-kicker">03 / WINDOWS 10</p>
+      <h2 class="section-title">Sácale hasta un 30% más de fluidez sin gastar un euro.</h2>
+      <p class="section-lead">Windows 10 acumula procesos heredados y efectos visuales que cuestan más de lo que aportan. Empezamos por lo medible y terminamos por lo estético.</p>
+
+      <div class="tabs" data-tabs>
+        <button class="tab-btn is-active" data-tab="perf">Rendimiento</button>
+        <button class="tab-btn" data-tab="visual">Estética</button>
+      </div>
+
+      <div class="tab-panel is-active" data-panel="perf">
+        <div class="tip-grid">
+          <article class="tip-card">
+            <span class="tip-index">01</span>
+            <h3>Plan de energía de alto rendimiento</h3>
+            <p>El plan "Equilibrado" limita la frecuencia de la CPU en reposo. En equipos de sobremesa, actívalo sin miedo al consumo.</p>
+            <code class="code-line">powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">02</span>
+            <h3>Desactiva el inicio innecesario</h3>
+            <p>Cada aplicación marcada como "Alto impacto" en el Administrador de tareas suma segundos al arranque.</p>
+            <code class="code-line">Ctrl + Shift + Esc → Inicio</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">03</span>
+            <h3>Activa TRIM en tu SSD</h3>
+            <p>Windows lo activa por defecto, pero conviene confirmarlo tras clonar un disco o instalar un controlador de terceros.</p>
+            <code class="code-line">fsutil behavior query DisableDeleteNotify</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">04</span>
+            <h3>Limpieza de WinSxS</h3>
+            <p>La carpeta de componentes acumulada por actualizaciones puede ocupar decenas de GB de forma silenciosa.</p>
+            <code class="code-line">Dism.exe /online /Cleanup-Image /StartComponentCleanup</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">05</span>
+            <h3>Desactiva Superfetch si usas SSD</h3>
+            <p>Pensado para discos mecánicos, en unidades sólidas rápidas puede generar escrituras innecesarias.</p>
+            <code class="code-line">net.exe stop SysMain</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">06</span>
+            <h3>Revisa el nivel de telemetría</h3>
+            <p>Reducirla a "Básico" (Enterprise) o "Requerido" libera ciclos de fondo dedicados al envío de diagnósticos.</p>
+            <code class="code-line">Config. → Privacidad → Diagnóstico y comentarios</code>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="visual">
+        <div class="visual-split">
+          <div class="visual-copy">
+            <h3>Un Windows 10 que no parece de 2015</h3>
+            <p>El objetivo no es ocultar el sistema, es pulirlo: tipografías más limpias, iconografía coherente y un escritorio que respire.</p>
+            <ul class="checklist">
+              <li><strong>Tema oscuro real</strong> — Configuración → Personalización → Colores, y fuerza el modo oscuro también en apps clásicas mediante el registro.</li>
+              <li><strong>Iconos consistentes</strong> — paquetes como <em>Papirus para Windows</em> o <em>Win10 Icons Pack</em> unifican el estilo de todo el sistema de archivos.</li>
+              <li><strong>Rainmeter</strong> — widgets de CPU, red y reloj minimalistas que sustituyen a las Gadgets clásicas.</li>
+              <li><strong>Open-Shell</strong> — recupera un menú Inicio clásico y personalizable si el de serie se queda corto.</li>
+              <li><strong>Fondo dinámico</strong> — herramientas como <em>Lively Wallpaper</em> añaden fondos animados con coste de CPU casi nulo cuando la ventana está en foco.</li>
+            </ul>
+          </div>
+          <div class="visual-mock">
+            <div class="mock-window win10-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-body">
+                <div class="mock-widget"></div>
+                <div class="mock-widget short"></div>
+                <div class="mock-taskbar"></div>
+              </div>
+            </div>
+            <span class="mock-caption">Escritorio con Rainmeter + tema oscuro forzado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WINDOWS 11 ============ -->
+  <section class="os-section" id="windows11" data-os-section="win11">
+    <div class="section-inner">
+      <p class="section-kicker">04 / WINDOWS 11</p>
+      <h2 class="section-title">Más bonito de serie, más pesado si no lo tocas.</h2>
+      <p class="section-lead">El nuevo Explorador y los efectos Mica se ven bien, pero consumen memoria de forma agresiva. Aquí recuperamos el control.</p>
+
+      <div class="tabs" data-tabs>
+        <button class="tab-btn is-active" data-tab="perf">Rendimiento</button>
+        <button class="tab-btn" data-tab="visual">Estética</button>
+      </div>
+
+      <div class="tab-panel is-active" data-panel="perf">
+        <div class="tip-grid">
+          <article class="tip-card">
+            <span class="tip-index">01</span>
+            <h3>Desactiva efectos de transparencia</h3>
+            <p>Mica y las animaciones de ventana consumen GPU de forma constante en equipos con gráfica integrada.</p>
+            <code class="code-line">Config. → Accesibilidad → Efectos visuales</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">02</span>
+            <h3>Limita las apps en segundo plano</h3>
+            <p>Windows 11 mantiene procesos "en espera" incluso minimizados. Revisa la lista app por app.</p>
+            <code class="code-line">Config. → Aplicaciones → Aplicaciones en segundo plano</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">03</span>
+            <h3>Programación de GPU con aceleración de hardware</h3>
+            <p>Reduce la latencia de entrada y descarga trabajo de la CPU en equipos con GPU dedicada moderna.</p>
+            <code class="code-line">Config. → Pantalla → Gráficos → Programación de GPU</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">04</span>
+            <h3>Desactiva VBS si no la necesitas</h3>
+            <p>La seguridad basada en virtualización puede restar hasta un 10% de rendimiento en juegos; valóralo según tu uso.</p>
+            <code class="code-line">msinfo32 → Seguridad basada en virtualización</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">05</span>
+            <h3>Storage Sense automático</h3>
+            <p>Libera archivos temporales y vacía la papelera de forma programada sin intervención manual.</p>
+            <code class="code-line">Config. → Sistema → Almacenamiento → Storage Sense</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">06</span>
+            <h3>Revisa el modo de energía</h3>
+            <p>En portátiles, "Máximo rendimiento" solo debería usarse conectado a la corriente.</p>
+            <code class="code-line">Config. → Sistema → Energía → Modo de energía</code>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="visual">
+        <div class="visual-split reverse">
+          <div class="visual-mock">
+            <div class="mock-window win11-mock">
+              <div class="mock-bar rounded"><span></span><span></span><span></span></div>
+              <div class="mock-body">
+                <div class="mock-startmenu"></div>
+                <div class="mock-tiles">
+                  <i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+            <span class="mock-caption">Menú Inicio centrado con StartAllBack</span>
+          </div>
+          <div class="visual-copy">
+            <h3>Recupera el control del Explorador</h3>
+            <p>Windows 11 simplificó demasiado su interfaz. Estas herramientas devuelven funciones sin sacrificar el diseño moderno.</p>
+            <ul class="checklist">
+              <li><strong>ExplorerPatcher</strong> — restaura la barra de tareas clásica o híbrida, con menús contextuales completos.</li>
+              <li><strong>StartAllBack</strong> — personaliza el menú Inicio, la barra de tareas y el Explorador con temas propios.</li>
+              <li><strong>Cursores personalizados</strong> — paquetes como <em>Sagittarius Snow</em> encajan con el lenguaje visual de Fluent Design.</li>
+              <li><strong>Fondos con paralaje</strong> — <em>Lively Wallpaper</em> también soporta escenas 3D ligeras vía WebGL.</li>
+              <li><strong>Widgets nativos curados</strong> — desactiva los que no uses desde Configuración → Widgets para evitar procesos huérfanos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LINUX ============ -->
+  <section class="os-section" id="linux" data-os-section="linux">
+    <div class="section-inner">
+      <p class="section-kicker">05 / LINUX</p>
+      <h2 class="section-title">Cuando el sistema operativo se adapta a ti, no al revés.</h2>
+      <p class="section-lead">Válido para distribuciones basadas en Debian/Ubuntu, Fedora y Arch. Ajusta los comandos al gestor de paquetes de tu distro.</p>
+
+      <div class="tabs" data-tabs>
+        <button class="tab-btn is-active" data-tab="perf">Rendimiento</button>
+        <button class="tab-btn" data-tab="visual">Estética</button>
+      </div>
+
+      <div class="tab-panel is-active" data-panel="perf">
+        <div class="tip-grid">
+          <article class="tip-card">
+            <span class="tip-index">01</span>
+            <h3>Ajusta el swappiness</h3>
+            <p>El valor por defecto (60) es conservador. En equipos con 16GB+ de RAM, bajarlo reduce el uso de swap.</p>
+            <code class="code-line">sudo sysctl vm.swappiness=10</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">02</span>
+            <h3>TLP para portátiles</h3>
+            <p>Gestiona automáticamente CPU, USB y radios inalámbricas según estés en batería o corriente.</p>
+            <code class="code-line">sudo apt install tlp &amp;&amp; sudo tlp start</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">03</span>
+            <h3>Habilita TRIM periódico</h3>
+            <p>Mantiene el rendimiento del SSD a largo plazo sin el desgaste de un TRIM continuo.</p>
+            <code class="code-line">sudo systemctl enable fstrim.timer</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">04</span>
+            <h3>Preload / Zswap</h3>
+            <p><em>preload</em> precarga en RAM las apps de uso frecuente; <em>zswap</em> comprime la swap antes de escribirla en disco.</p>
+            <code class="code-line">sudo apt install preload</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">05</span>
+            <h3>Revisa servicios en el arranque</h3>
+            <p>Muchas distros activan por defecto servicios de impresión, bluetooth o indexado que no necesitas.</p>
+            <code class="code-line">systemctl list-unit-files --state=enabled</code>
+          </article>
+          <article class="tip-card">
+            <span class="tip-index">06</span>
+            <h3>Elige el kernel adecuado</h3>
+            <p>Un kernel <em>zen</em> o <em>liquorix</em> prioriza la capacidad de respuesta del escritorio frente al genérico.</p>
+            <code class="code-line">sudo apt install linux-zen</code>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="visual">
+        <div class="visual-split">
+          <div class="visual-copy">
+            <h3>El escritorio como lienzo</h3>
+            <p>Ningún otro sistema ofrece este nivel de personalización sin parches no oficiales. Empieza por el entorno y termina por el detalle.</p>
+            <ul class="checklist">
+              <li><strong>GNOME + extensiones</strong> — <em>Blur my Shell</em>, <em>Dash to Dock</em> y <em>Vitals</em> transforman la experiencia por defecto.</li>
+              <li><strong>KDE Plasma</strong> — efectos de composición nativos vía KWin, temas Kvantum y widgets de escritorio integrados.</li>
+              <li><strong>Temas GTK/Qt coherentes</strong> — combina <em>Papirus</em> (iconos) con <em>Orchis</em> o <em>Catppuccin</em> (tema) para consistencia total.</li>
+              <li><strong>Conky / eww</strong> — paneles de sistema en tiempo real, totalmente configurables por código.</li>
+              <li><strong>Zsh + Starship</strong> — una terminal rápida, con prompt contextual e íconos por lenguaje de proyecto.</li>
+            </ul>
+          </div>
+          <div class="visual-mock">
+            <div class="mock-window linux-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-body">
+                <div class="mock-terminal">
+                  <span class="term-line">$ neofetch</span>
+                  <span class="term-line dim">OS: Arch Linux x86_64</span>
+                  <span class="term-line dim">DE: KDE Plasma 6</span>
+                  <span class="term-line dim">Theme: Catppuccin Mocha</span>
+                </div>
+                <div class="mock-conky"></div>
+              </div>
+            </div>
+            <span class="mock-caption">Terminal con Starship + Conky lateral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ANTES/DESPUÉS ============ -->
+  <section class="gallery" id="galeria">
+    <div class="section-inner">
+      <p class="section-kicker">06 / GALERÍA</p>
+      <h2 class="section-title">El mismo escritorio, dos decisiones distintas.</h2>
+      <p class="section-lead">Arrastra el control para comparar un escritorio recién instalado frente a uno optimizado y personalizado.</p>
+
+      <div class="compare" id="compareSlider">
+        <div class="compare-after">
+          <div class="compare-scene after-scene">
+            <div class="scene-tag">Optimizado</div>
+            <div class="scene-taskbar dark"></div>
+            <div class="scene-widget w1"></div>
+            <div class="scene-widget w2"></div>
+            <div class="scene-dock"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="compare-before" id="compareBefore">
+          <div class="compare-scene before-scene">
+            <div class="scene-tag">De fábrica</div>
+            <div class="scene-taskbar light"></div>
+            <div class="scene-icons"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <input type="range" min="0" max="100" value="50" id="compareRange" class="compare-range" aria-label="Comparar antes y después">
+        <div class="compare-handle" id="compareHandle">
+          <svg viewBox="0 0 24 24"><path d="M8 6L2 12l6 6M16 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERRAMIENTAS ============ -->
+  <section class="tools" id="herramientas">
+    <div class="section-inner">
+      <p class="section-kicker">07 / CAJA DE HERRAMIENTAS</p>
+      <h2 class="section-title">Lo que instalamos nosotros mismos.</h2>
+
+      <div class="tools-grid">
+        <div class="tools-col" style="--acc:var(--acc-win10)">
+          <h3>Windows 10</h3>
+          <ul class="tool-list">
+            <li><span>O&amp;O ShutUp10++</span><small>control de privacidad y telemetría</small></li>
+            <li><span>Rainmeter</span><small>widgets de escritorio</small></li>
+            <li><span>Open-Shell</span><small>menú Inicio clásico</small></li>
+            <li><span>Lively Wallpaper</span><small>fondos animados eficientes</small></li>
+          </ul>
+        </div>
+        <div class="tools-col" style="--acc:var(--acc-win11)">
+          <h3>Windows 11</h3>
+          <ul class="tool-list">
+            <li><span>ExplorerPatcher</span><small>restaura funciones clásicas</small></li>
+            <li><span>StartAllBack</span><small>menú Inicio y Explorador</small></li>
+            <li><span>Autoruns</span><small>gestión avanzada de arranque</small></li>
+            <li><span>Winaero Tweaker</span><small>ajustes ocultos del sistema</small></li>
+          </ul>
+        </div>
+        <div class="tools-col" style="--acc:var(--acc-linux)">
+          <h3>Linux</h3>
+          <ul class="tool-list">
+            <li><span>TLP</span><small>gestión de energía</small></li>
+            <li><span>Stacer</span><small>limpieza y monitor gráfico</small></li>
+            <li><span>Conky / eww</span><small>widgets de sistema</small></li>
+            <li><span>Starship</span><small>prompt de terminal</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="final-cta">
+    <div class="section-inner">
+      <p class="section-kicker">08 / SIGUIENTE PASO</p>
+      <h2 class="section-title">Empieza por un solo cambio, no por diez.</h2>
+      <p class="section-lead">Elige el ajuste con mayor impacto para tu caso —arranque, batería o estética— y mide el resultado antes de seguir con la lista.</p>
+      <a href="#top" class="btn btn-primary sfx-click">Volver arriba</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <img src="assets/img/logo.png" alt="Make It Virtual">
+      <p>Proyectos · Tecnología · Innovación · Curiosidades · y mucho más.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#windows10">Windows 10</a>
+      <a href="#windows11">Windows 11</a>
+      <a href="#linux">Linux</a>
+      <a href="#galeria">Galería</a>
+      <a href="#herramientas">Herramientas</a>
+    </div>
+  </div>
+  <div class="footer-bottom section-inner">
+    <span>© <span id="year"></span> Make It Virtual. Todos los ajustes deben probarse bajo tu propia responsabilidad.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
